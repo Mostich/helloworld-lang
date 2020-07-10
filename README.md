@@ -1,5 +1,5 @@
 # helloworld-lang
-============
+
 The HelloWorld Programming Language
 
 Programming language for output Hello World
@@ -7,7 +7,7 @@ Programming language for output Hello World
 File extension: .hw
 
 Example:
-```crystal
+```
 echo "Hello, World!"
 print "Hello World"
 log "Hello World!"
