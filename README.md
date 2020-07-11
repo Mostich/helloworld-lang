@@ -9,13 +9,14 @@ File extension: .hw
 Example:
 ```
 echo "Hello, World!"
-print "Hello World"
-log "Hello World!"
-write "Hello World"
+print ("Hello World")
+log: "Hello World!"
+write: ("Hello World")
 ...
 ```
 ```bash
 $helloworld -f example.hw
 $helloworld -f example.hw -a
+$helloworld -f example.hw -i
 $helloworld --help
 ```

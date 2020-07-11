@@ -2,9 +2,11 @@ require "option_parser"
 require "./read.cr"
 filename = ""
 about_file = false
+ignore_errors = false
 parser = OptionParser.new do |parser|
   parser.banner = "Usage: example [subcommand] [arguments]"
   parser.on("-f NAME", "--file=NAME", "File name") { |name| filename = name }
+  parser.on("-i", "--ignore", "Ignore Errors") { ignore_errors = true }
   parser.on("-a", "--about", "About file") { about_file = true }
   parser.on("-v", "--version", "Version") do
     puts "HelloWorld: 0.1.1"
@@ -32,7 +34,7 @@ else
                 puts "Filename: #{filename}"
                 puts "Size: #{File.size(filename)} bytes"
             end
-            read(filename)
+            read(filename, ignore_errors)
         end
     else
         puts "File not found!"
