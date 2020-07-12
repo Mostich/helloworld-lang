@@ -9,7 +9,7 @@ parser = OptionParser.new do |parser|
   parser.on("-i", "--ignore", "Ignore Errors") { ignore_errors = true }
   parser.on("-a", "--about", "About file") { about_file = true }
   parser.on("-v", "--version", "Version") do
-    puts "HelloWorld: 0.1.1"
+    puts "HelloWorld: 0.1.2_1"
     exit
   end
   parser.on("-h", "--help", "Show HELP") do
@@ -21,22 +21,21 @@ end
 parser.parse
 
 if File.extname(filename) == ""
-    puts "The file has no extension!"
+  puts "The file has no extension!"
 elsif File.extname(filename) != ".hw"
-    puts "File extension not .hw"
+  puts "File extension not .hw"
 else
-    
-    if File.file?(filename)
-        if File.size(filename) == 0
-            puts "File is empty"
-        else
-            if about_file
-                puts "Filename: #{filename}"
-                puts "Size: #{File.size(filename)} bytes"
-            end
-            read(filename, ignore_errors)
-        end
+  if File.file?(filename)
+    if File.size(filename) == 0
+      puts "File is empty"
     else
-        puts "File not found!"
+      if about_file
+        puts "Filename: #{filename}"
+        puts "Size: #{File.size(filename)} bytes"
+      end
+      read(filename, ignore_errors)
     end
+  else
+    puts "File not found!"
+  end
 end
