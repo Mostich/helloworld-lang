@@ -47,6 +47,18 @@ PRINTS_ENTER =
     "alert",
   ]
 
+
+class Lexer
+  def initialize(strings)
+    @keyword = ""
+    string_info = "";
+    strings.each do |x|
+      PRINTS.each{|y| string_info = "[keyword: #{@keyword = y}]" if x.includes? y}
+      puts string_info
+    end
+  end
+end
+
 def read(filename, ignore_errors)
   lines = File.read_lines(filename)
   lines.each_index do |x|
@@ -65,6 +77,7 @@ end
 
 
 def contains_error(is_error, error_line, lines, ignore_errors)
+  lex = Lexer.new(lines)
   lines.each do |x|
     error_line.value += 1
     x = x.split("\"")
@@ -100,8 +113,6 @@ def contains_error(is_error, error_line, lines, ignore_errors)
     end
   end
 end
-
-
 
 def performance(lines, is_error)
   lines.each do |x|
