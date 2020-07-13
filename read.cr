@@ -53,8 +53,16 @@ class Lexer
     @keyword = ""
     string_info = "";
     strings.each do |x|
-      PRINTS.each{|y| string_info = "[keyword: #{@keyword = y}]" if x.includes? y}
-      puts string_info
+      print "#{strings.index(x)} #{x}\n"
+      PRINTS.each do |y|
+        if x.includes? y
+          @keyword = y
+          break
+        else
+          @keyword = "Nope"
+        end
+      end
+      puts "[\n keyword: #{@keyword }\n]"
     end
   end
 end
@@ -70,8 +78,10 @@ def read(filename, ignore_errors)
 
   error_line = 0
   is_error = false
-  contains_error( pointerof(is_error) , pointerof(error_line), lines, pointerof(ignore_errors))
-  performance(lines, is_error)
+
+  lex = Lexer.new(lines)
+  #contains_error( pointerof(is_error) , pointerof(error_line), lines, pointerof(ignore_errors))
+  #performance(lines, is_error)
 
 end
 
