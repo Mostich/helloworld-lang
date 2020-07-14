@@ -51,20 +51,25 @@ PRINTS_ENTER =
 class Lexer
   def initialize(strings)
     @keyword = ""
-    string_info = "";
+
     strings.each do |x|
-      print "#{strings.index(x)} #{x}\n"
-      PRINTS.each do |y|
-        if x.includes? y
-          @keyword = y
-          break
-        else
-          @keyword = "Nope"
-        end
+      print "#{strings.index(x)}) [#{x}]\n"
+
+      if !x.match(/(^print)(\:?)\s?"(.+)"/).nil?
+        keystring = x.match(/(^print)(\:?)\s?"(.+)"/).not_nil!
+        quotes = keystring[3]
+        @keyword = keystring[1]
+        colon = keystring[2]
+      else
+        quotes = "Nope"
+        @keyword = "Nope"
+        colon = "Nope"
       end
-      puts "[\n keyword: #{@keyword }\n]"
+      puts "[\n keyword: [#{@keyword }]\n colon: [#{colon}] \n quotes: [#{quotes}] \n]"
     end
+
   end
+
 end
 
 def read(filename, ignore_errors)
