@@ -1,6 +1,8 @@
 require "option_parser"
-require "./read.cr"
+require "./lexer.cr"
+
 filename = ""
+lines = [""]
 about_file = false
 ignore_errors = false
 parser = OptionParser.new do |parser|
@@ -39,3 +41,13 @@ else
     puts "File not found!"
   end
 end
+
+
+def read(filename, ignore_errors)
+  lines = File.read_lines(filename)
+
+  lines = Lexer.clear(lines)
+  lex = Lexer::Read.new(lines)
+  
+end
+
