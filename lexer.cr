@@ -20,19 +20,13 @@ module Lexer
       @keyword = ""
 
       strings.each do |x|
-        print "#{strings.index(x)}) [#{x}]\n"
-
-        if !x.match(/(^print)(\:?)\s?"(.+)"/).nil?
-          keystring = x.match(/(^print)(\:?)\s?"(.+)"/).not_nil!
-          quotes = keystring[3]
+        if !x.match(/(^print)\:?\s?\(?\s*"(.+)"\s*\)?/).nil?
+          keystring = x.match(/(^print)\:?\s?\(?\s*"(.+)"\s*\)?/).not_nil!
+          quotes = keystring[2]
           @keyword = keystring[1]
-          colon = keystring[2]
-        else
-          quotes = "Nope"
-          @keyword = "Nope"
-          colon = "Nope"
+          str = "Hello\n"
+          print("#{quotes.gsub("\\n", '\n')}")
         end
-        puts "[\n keyword: [#{@keyword }]\n colon: [#{colon}] \n quotes: [#{quotes}] \n]"
       end
 
     end

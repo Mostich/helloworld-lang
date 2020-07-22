@@ -23,7 +23,7 @@ end
 parser.parse
 
 if filename == ""
-  filename = ARGV[0]
+  filename = ARGV[0]? || ""
 end
 
 if File.extname(filename) == ""
