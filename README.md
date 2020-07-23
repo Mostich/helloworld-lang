@@ -7,16 +7,20 @@ Programming language for output Hello World
 File extension: .hw
 
 Example:
-```
-echo "Hello, World!"
+```nim
+msg -> print
+echo -> print
+
+var hello = "Hello, World!"
+
+echo: ("Hello, World!")
 print ("Hello World")
-log: "Hello World!"
-write: ("Hello World")
-...
+msg: (hello)
 ```
 ```bash
+$helloworld example.hw
 $helloworld -f example.hw
-$helloworld -f example.hw -a
-$helloworld -f example.hw -i
+$helloworld example.hw -a
+$helloworld example.hw -i
 $helloworld --help
 ```
