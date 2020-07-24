@@ -1,4 +1,5 @@
 require "option_parser"
+require "colorize"
 require "./lexer.cr"
 
 filename = ""
@@ -11,7 +12,7 @@ parser = OptionParser.new do |parser|
   parser.on("-i", "--ignore", "Ignore Errors") { ignore_errors = true }
   parser.on("-a", "--about", "About file") { about_file = true }
   parser.on("-v", "--version", "Version") do
-    puts "HelloWorld: 0.1.2_1"
+    puts "HelloWorld: 0.2.0"
     exit
   end
   parser.on("-h", "--help", "Show HELP") do
@@ -49,9 +50,9 @@ end
 
 def read(filename, ignore_errors)
   lines = File.read_lines(filename)
-
+  
   lines = Lexer.clear(lines)
-  lex = Lexer::Read.new(lines)
+  lex = Lexer::Read.new(lines, ignore_errors)
   
 end
 
